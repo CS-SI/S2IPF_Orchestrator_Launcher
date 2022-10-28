@@ -8,7 +8,7 @@ Copyright (C) 2020-2022 CS GROUP – France, https://www.csgroup.eu
 
 Licensing
 =========
-S2IPF_Orchestrator is licensed under the Apache License, Version 2.0. See
+S2IPF_Orchestrator_Launcher is licensed under the Apache License, Version 2.0. See
 [LICENSE](https://github.com/CS-SI/S2IPF_Orchestrator/tree/main/LICENSE) for the full
 license text.
 
