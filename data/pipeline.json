@@ -2,6 +2,26 @@
   "TASKTABLE_CONFIGURATION" :
   [
     {
+      "Name" : "L0",
+      "Chain" : "L0",
+      "Conditions" : ["L0 chain from a L0U input"],
+      "Provides" : ["Provides a L0C context to produce L0C granules and datastrip using the OLQC_L0* modes"]
+    },
+    {
+      "Name" : "OLQC_L0DS",
+      "Chain" : "L0",
+      "PreviousTask" : ["L0"],
+      "Conditions" : ["L0 context must have been run"],
+      "Provides" : ["Provides a L0C Datastrip product in the L0_PDI folder"]
+    },
+    {
+      "Name" : "OLQC_L0GR",
+      "Chain" : "L0",
+      "PreviousTask" : ["L0"],
+      "Conditions" : ["L0 context must have been run"],
+      "Provides" : ["Provides L0C Granules products in the L0_PDI folder"]
+    },
+    {
       "Name" : "L1A",
       "Chain" : "L1",
       "Conditions" : ["Input L0C must contains more than 36 granules thus more than 3 scenes ( 1 scene = 1 granule per each detector"],

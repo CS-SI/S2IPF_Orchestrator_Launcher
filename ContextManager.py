@@ -74,11 +74,12 @@ class ContextManager(object):
                             excluded, filtered = self._is_excluded_or_filtered(conf, localpath)
                             if excluded:
                                 continue
-                            self._logger.debug("Rellocating " + localpath)
+                            self._logger.debug("Rellocating " + localpath + " from "+str(f[0]))
                             try:
                                 element_name_to_copy = str(localpath).replace(current_tasktable_dir + os.sep, "").replace(
                                     current_tasktable_dir, "")
                                 element_to_copy = os.path.join(current_tasktable_dir, element_name_to_copy)
+                                f[1][idx] = os.path.join(output_folder, element_name_to_copy)
                                 if element_to_copy not in cache_folders:
                                     if os.path.isdir(element_to_copy):
                                         # Special case when we need to remove the gfs files
@@ -88,17 +89,14 @@ class ContextManager(object):
                                             FileUtils.remove_files_recursively(element_to_copy, ".*L1A.*raw")
                                         if filtered and not do_l1b:
                                             FileUtils.remove_files_recursively(element_to_copy, ".*L1B.*raw")
-
                                         # Standard case
                                         FileUtils.copy_directory_recursive(element_to_copy,
                                                                            os.path.join(output_folder,
                                                                                         element_name_to_copy))
                                         cache_folders.append(element_to_copy)
-                                        f[1][idx] = os.path.join(output_folder, element_name_to_copy)
                                     elif os.path.isfile(element_to_copy):
                                         FileUtils.copy_file(element_to_copy,
                                                             os.path.join(output_folder, element_name_to_copy))
-                                        f[1][idx] = os.path.join(output_folder, element_name_to_copy)
                                 else:
                                     self._logger.debug("Already in cache")
                             except OSError as err:
