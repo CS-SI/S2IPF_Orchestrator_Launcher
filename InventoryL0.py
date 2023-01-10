@@ -94,18 +94,24 @@ class InventoryL0(Inventory):
             raise Exception("No granules found in " + os.path.join(pdi_gr_output_folder, "DB1", "S2*GR*"))
         for gr in granules_out:
             self.__verify_granule(gr)
-        output_folder_inventory = os.path.join(working_dir, "INV_L0C_GR")
-        if not os.path.exists(output_folder_inventory):
-            FileUtils.create_directory(output_folder_inventory)
+        output_folder_inventory_tar = os.path.join(working_dir, "INV_L0C_GR_TMP")
+        if not os.path.exists(output_folder_inventory_tar):
+            FileUtils.create_directory(output_folder_inventory_tar)
         # Find the JobOrder Template
-        jobs = self.split_granules_jobs(granules_out, inventory_working_dir, output_folder_inventory,
+        jobs = self.split_granules_jobs(granules_out, inventory_working_dir, output_folder_inventory_tar,
                                         datastrip_out, acquisition_station, nb_tasks, "L0")
         # Launch process
         self._launch_inventory_process(jobs, "GR_L0C", self._gr_inventory_script)
-        list_of_gr_produced = glob.glob(os.path.join(output_folder_inventory, "S2*GR*tar"))
+        list_of_gr_produced = glob.glob(os.path.join(output_folder_inventory_tar, "S2*GR*tar"))
         self.logger.debug(list_of_gr_produced)
         if len(list_of_gr_produced) == 0:
-            raise Exception("No granules produced in inventory GR L0C : " + output_folder_inventory)
+            raise Exception("No granules produced in inventory GR L0C : " + output_folder_inventory_tar)
+        # Copy then the original granules / not tar to the output
+        output_folder_inventory = os.path.join(working_dir, "INV_L0C_GR")
+        if not os.path.exists(output_folder_inventory):
+            FileUtils.create_directory(output_folder_inventory)
+        self.logger.debug("Copying L0 granules from "+granules_working_dir+" to " + output_folder_inventory)
+        FileUtils.copy_directory_recursive(granules_working_dir, output_folder_inventory, "S2*L0_GR*")
         # Copy OLQC reports
         for gr in granules_out:
             self.__copy_olqc_granule(gr, output_folder_inventory)
@@ -134,9 +140,9 @@ class InventoryL0(Inventory):
         inventory_working_dir = os.path.join(working_dir, "ipf_output_inventory_DS_L0C_" + dateoflogs)
         if not os.path.exists(inventory_working_dir):
             FileUtils.create_directory(inventory_working_dir)
-        output_folder_inventory = os.path.join(working_dir, "INV_L0C_DS")
-        if not os.path.exists(output_folder_inventory):
-            FileUtils.create_directory(output_folder_inventory)
+        output_folder_inventory_tar = os.path.join(working_dir, "INV_L0C_DS_TMP")
+        if not os.path.exists(output_folder_inventory_tar):
+            FileUtils.create_directory(output_folder_inventory_tar)
         # Find the JobOrder Template
         inv_mtd_l0_ds_template_filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data",
                                                        "JobOrderTemplates",
@@ -145,7 +151,7 @@ class InventoryL0(Inventory):
         jo_reader = JobOrderInventoryReader(inv_mtd_l0_ds_template_filename)
         jo_reader.set_ds_l0_input(datastrip_out)
         jo_reader.set_working_input(inventory_working_dir)
-        jo_reader.set_output(output_folder_inventory)
+        jo_reader.set_output(output_folder_inventory_tar)
         jo_reader.set_acquisition_station(acquisition_station)
         jo_reader.set_processing_station(Constants.PROCESSING_STATION)
         jo_reader.set_source_software_version(self._soft_version)
@@ -154,9 +160,14 @@ class InventoryL0(Inventory):
         # Launch process
         self._launch_inventory_process([inventory_job_order], "DS_L0C", self._ds_inventory_script)
         # List datastrips in output of inventory
-        list_of_ds_produced = glob.glob(os.path.join(output_folder_inventory, "S2*DS*tar"))
+        list_of_ds_produced = glob.glob(os.path.join(output_folder_inventory_tar, "S2*DS*tar"))
         if len(list_of_ds_produced) == 0:
-            raise Exception("No datastrip produced in inventory DS L0C : " + output_folder_inventory)
+            raise Exception("No datastrip produced in inventory DS L0C : " + output_folder_inventory_tar)
+        output_folder_inventory = os.path.join(working_dir, "INV_L0C_DS")
+        if not os.path.exists(output_folder_inventory):
+            FileUtils.create_directory(output_folder_inventory)
+        self.logger.debug("Copying " + datastrip_out + " to " + output_folder_inventory)
+        FileUtils.copy_directory_recursive(pdi_ds_output_folder, output_folder_inventory, "S2*L0_DS*")
         self.logger.info("Inventory DS L0C done, products can be found in : " + output_folder_inventory)
         # Copy OLQC report
         self.__copy_olqc_datastrip(datastrip_out, output_folder_inventory)

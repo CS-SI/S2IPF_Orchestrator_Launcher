@@ -21,9 +21,6 @@
       "QL_CLOUD_MASK": "06.01.00",
       "QL_DECOMP": "06.01.00",
       "QL_GEO": "06.01.00",
-      "UNFORMAT_SAFE_DS": "06.01.00",
-      "UNFORMAT_SAFE_GR": "06.01.00",
-      "UPDATE_LOC": "06.01.00",
       "OLQC": "06.01.00"
     },
     "L1": {
