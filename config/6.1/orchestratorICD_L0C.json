@@ -167,7 +167,7 @@
       ],
       [
         "ARCHIVING_CENTER_NAME",
-        "2BPS"
+        "REFS"
       ],
       [
         "ARCHIVING_CENTER_COUNTRY",
@@ -184,6 +184,18 @@
       [
         "PROCESSING_CENTER",
         "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_NAME",
+        "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_COUNTRY",
+        "Italy"
+      ],
+      [
+        "PROCESSING_CENTER_ORG",
+        "ESA"
       ],
       [
         "FAKE_MODE",
@@ -217,11 +229,11 @@
       ],
       [
         "ARCHIVING_CENTER",
-        "EDRS"
+        "REFS"
       ],
       [
         "ARCHIVING_CENTER_NAME",
-        "2BPS"
+        "REFS"
       ],
       [
         "ARCHIVING_CENTER_COUNTRY",
@@ -237,7 +249,19 @@
       ],
       [
         "PROCESSING_CENTER",
-        "EDRS"
+        "REFS"
+      ],
+      [
+        "PROCESSING_CENTER_NAME",
+        "REFS"
+      ],
+      [
+        "PROCESSING_CENTER_COUNTRY",
+        "Italy"
+      ],
+      [
+        "PROCESSING_CENTER_ORG",
+        "ESA"
       ],
       [
         "CREATION_DATE",
@@ -617,7 +641,7 @@
       ],
       [
         "ARCHIVING_CENTER_NAME",
-        "2BPS"
+        "REFS"
       ],
       [
         "ARCHIVING_CENTER_COUNTRY",
@@ -634,6 +658,18 @@
       [
         "PROCESSING_CENTER",
         "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_NAME",
+        "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_COUNTRY",
+        "Italy"
+      ],
+      [
+        "PROCESSING_CENTER_ORG",
+        "ESA"
       ],
       [
         "MULTI_BAND_RASTER_MASKS",
@@ -647,11 +683,11 @@
     "FORMAT_METADATA_DS_L1A": [
       [
         "ARCHIVING_CENTER",
-        "EDRS"
+        "REFS"
       ],
       [
         "ARCHIVING_CENTER_NAME",
-        "2BPS"
+        "REFS"
       ],
       [
         "ARCHIVING_CENTER_COUNTRY",
@@ -668,6 +704,18 @@
       [
         "PROCESSING_CENTER",
         "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_NAME",
+        "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_COUNTRY",
+        "Italy"
+      ],
+      [
+        "PROCESSING_CENTER_ORG",
+        "ESA"
       ],
       [
         "FAKE_MODE",
@@ -781,7 +829,7 @@
       ],
       [
         "ARCHIVING_CENTER_NAME",
-        "2BPS"
+        "REFS"
       ],
       [
         "ARCHIVING_CENTER_COUNTRY",
@@ -798,6 +846,18 @@
       [
         "PROCESSING_CENTER",
         "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_NAME",
+        "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_COUNTRY",
+        "Italy"
+      ],
+      [
+        "PROCESSING_CENTER_ORG",
+        "ESA"
       ],
       [
         "MULTI_BAND_RASTER_MASKS",
@@ -819,7 +879,7 @@
       ],
       [
         "ARCHIVING_CENTER_NAME",
-        "2BPS"
+        "REFS"
       ],
       [
         "ARCHIVING_CENTER_COUNTRY",
@@ -836,6 +896,18 @@
       [
         "PROCESSING_CENTER",
         "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_NAME",
+        "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_COUNTRY",
+        "Italy"
+      ],
+      [
+        "PROCESSING_CENTER_ORG",
+        "ESA"
       ],
       [
         "FAKE_MODE",
@@ -987,7 +1059,7 @@
       ],
       [
         "ARCHIVING_CENTER_NAME",
-        "2BPS"
+        "REFS"
       ],
       [
         "ARCHIVING_CENTER_COUNTRY",
@@ -1004,6 +1076,18 @@
       [
         "PROCESSING_CENTER",
         "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_NAME",
+        "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_COUNTRY",
+        "Italy"
+      ],
+      [
+        "PROCESSING_CENTER_ORG",
+        "ESA"
       ],
       [
         "FAKE_MODE",
@@ -1032,12 +1116,24 @@
         "EDRS"
       ],
       [
+        "PROCESSING_CENTER_NAME",
+        "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_COUNTRY",
+        "Italy"
+      ],
+      [
+        "PROCESSING_CENTER_ORG",
+        "ESA"
+      ],
+      [
         "ARCHIVING_CENTER",
         "EDRS"
       ],
       [
         "ARCHIVING_CENTER_NAME",
-        "2BPS"
+        "REFS"
       ],
       [
         "ARCHIVING_CENTER_COUNTRY",
