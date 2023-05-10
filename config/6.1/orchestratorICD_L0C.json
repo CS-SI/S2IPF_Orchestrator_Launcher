@@ -264,6 +264,18 @@
         "ESA"
       ],
       [
+        "PROCESSING_CENTER_NAME",
+        "EDRS"
+      ],
+      [
+        "PROCESSING_CENTER_COUNTRY",
+        "Italy"
+      ],
+      [
+        "PROCESSING_CENTER_ORG",
+        "ESA"
+      ],
+      [
         "CREATION_DATE",
         "2014-06-30T14:00:00Z"
       ],

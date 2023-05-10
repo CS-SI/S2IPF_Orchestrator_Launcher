@@ -264,7 +264,7 @@
                     <Critical>true</Critical>
                     <Criticality_Level>1</Criticality_Level>
                     <File_Name>$FORMAT_METADATA_DS_L1B_EXE_DIR</File_Name>
-                    <List_of_Inputs count="38">
+                    <List_of_Inputs count="37">
                         <Input>
                             <Mode>ALWAYS</Mode>
                             <Mandatory>Yes</Mandatory>
@@ -741,21 +741,6 @@
                                     <T0>0</T0>
                                     <T1>0</T1>
                                     <File_Type>IERS</File_Type>
-                                    <File_Name_Type>Directory</File_Name_Type>
-                                </Alternative>
-                            </List_of_Alternatives>
-                        </Input>
-                        <Input>
-                            <Mode>ALWAYS</Mode>
-                            <Mandatory>Yes</Mandatory>
-                            <List_of_Alternatives count="1">
-                                <Alternative>
-                                    <Order>1</Order>
-                                    <Origin>DB</Origin>
-                                    <Retrieval_Mode>ValIntersect</Retrieval_Mode>
-                                    <T0>0</T0>
-                                    <T1>0</T1>
-                                    <File_Type>DEM_GLOBE</File_Type>
                                     <File_Name_Type>Directory</File_Name_Type>
                                 </Alternative>
                             </List_of_Alternatives>

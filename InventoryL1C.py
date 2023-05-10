@@ -114,8 +114,6 @@ class InventoryL1C(Inventory):
         # Check if inventory has been generated
         if not os.path.exists(os.path.join(datastrip_out, "Inventory_Metadata.xml")):
             raise Exception("No Inventory_Metadata.xml file generated in " + datastrip_out)
-        # Patch the dates
-        self._patch_inventory_dates_datastrip(datastrip_out)
         # Tar the datastrip
         ds_basename = os.path.basename(datastrip_out)
         out_file = os.path.join(output_folder_inventory, ds_basename)
@@ -207,8 +205,6 @@ class InventoryL1C(Inventory):
             inventory_mtd_reader = InventoryMetadataReader(os.path.join(tl, "Inventory_Metadata.xml"))
             if inventory_mtd_reader.get_file_id() is None or len(inventory_mtd_reader.get_file_id()) == 0:
                 raise Exception("Inventory_Metadata.xml is not correctly generated for " + tl)
-            # Patch the dates
-            self._patch_inventory_dates_granule(tl)
             # Remove VECTOR folder
             if os.path.isdir(os.path.join(tl, "QI_DATA", "VECTOR")):
                 shutil.rmtree(os.path.join(tl, "QI_DATA", "VECTOR"))

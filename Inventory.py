@@ -26,8 +26,7 @@ from log_colorizer import make_colored_stream_handler
 
 import Constants
 import FileUtils
-from DatastripReader import DatastripReader
-from InventoryMetadataReader import InventoryMetadataReader
+
 from JobOrderInventoryReader import JobOrderInventoryReader
 from TileMtdReader import TileMtdReader
 
@@ -88,12 +87,14 @@ class Inventory(object):
             real_nb_tasks = len(granules)
         step = int(math.ceil(float(len(granules)) / real_nb_tasks))
         self.logger.debug("Nb granule per instance : "+str(step))
+        nb_used=0
         for i in range(real_nb_tasks):
+            step = int((len(granules) - nb_used) / (real_nb_tasks - i))
             inventory_job_order = os.path.join(working, "JobOrderInventory_"+str(i+1)+".xml")
-            if i < nb_tasks:
-                job_granules = granules[i*step:(i+1)*step]
-            else:
-                job_granules = granules[i * step:]
+            self.logger.debug("i: "+str(i)+", "+str(nb_used)+":"+str(nb_used+step))
+            job_granules = granules[nb_used:nb_used+step]
+            nb_used += step
+            self.logger.debug("len: "+str(len(job_granules)))
             if granule_type.startswith("L1"):
                 self._write_gr_l1_job_order(inventory_job_order, job_granules, working,
                                             acquisition_station,
@@ -228,28 +229,3 @@ class Inventory(object):
             if report_file is None:
                 raise Exception("No "+report+" in folder : " + folder)
             FileUtils.copy_file(report_file, os.path.join(output_folder, os.path.basename(report_file)))
-
-    def _patch_inventory_dates_datastrip(self, datastrip_out):
-        self.logger.debug("Patching inventory mtd dates for datastrip : "+datastrip_out)
-        # read mtd ds
-        datastrip_xml_out = glob.glob(os.path.join(datastrip_out, "S2*DS*xml"))[0]
-        reader_mt = DatastripReader(datastrip_xml_out)
-        sensing_start = reader_mt.get_sensing_start_utc()
-        sensing_stop = reader_mt.get_sensing_stop_utc()
-        inventory_xml_out = os.path.join(datastrip_out, "Inventory_Metadata.xml")
-        reader_inventory = InventoryMetadataReader(inventory_xml_out)
-        reader_inventory.set_val_start_date(sensing_start)
-        reader_inventory.set_val_stop_date(sensing_stop)
-        reader_inventory.write_to_file(inventory_xml_out)
-
-    def _patch_inventory_dates_granule(self, granule_out):
-        self.logger.debug("Patching inventory mtd dates for granule : "+granule_out)
-        # read mtd gr
-        granule_xml_out = glob.glob(os.path.join(granule_out, "S2*xml"))[0]
-        reader_mt = DatastripReader(granule_xml_out)
-        sensing_time = reader_mt.get_sensing_time_utc()
-        inventory_xml_out = os.path.join(granule_out, "Inventory_Metadata.xml")
-        reader_inventory = InventoryMetadataReader(inventory_xml_out)
-        reader_inventory.set_val_start_date(sensing_time)
-        reader_inventory.set_val_stop_date(sensing_time)
-        reader_inventory.write_to_file(inventory_xml_out)
