@@ -103,8 +103,6 @@ class InventoryL1A(Inventory):
         # Check if inventory has been generated
         if not os.path.exists(os.path.join(datastrip_out, "Inventory_Metadata.xml")):
             raise Exception("No Inventory_Metadata.xml file generated in "+datastrip_out)
-        # Patch dates
-        self._patch_inventory_dates_datastrip(datastrip_out)
         # tar datastrip
         datastrip_filename = os.path.join(output_folder_inventory, os.path.basename(datastrip_out))
         FileUtils.copy_directory_recursive(datastrip_out, datastrip_filename)
@@ -168,8 +166,6 @@ class InventoryL1A(Inventory):
             # Check if inventory has been generated
             if not os.path.exists(os.path.join(gr, "Inventory_Metadata.xml")):
                 raise Exception("No Inventory_Metadata.xml file generated in " + gr)
-            # Patch dates
-            self._patch_inventory_dates_granule(gr)
             granule_filename = os.path.join(output_folder_inventory, os.path.basename(gr))
             # Copy OLQC reports
             self.__copy_olqc_granule(gr, output_folder_inventory)

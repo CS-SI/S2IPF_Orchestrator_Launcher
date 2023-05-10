@@ -21,9 +21,7 @@ import shutil
 
 import Constants
 import FileUtils
-from DatastripReader import DatastripReader
 from Inventory import Inventory
-from InventoryMetadataReader import InventoryMetadataReader
 from JobOrderInventoryReader import JobOrderInventoryReader
 
 
@@ -104,8 +102,6 @@ class InventoryL1B(Inventory):
         # Check if inventory has been generated
         if not os.path.exists(os.path.join(datastrip_out, "Inventory_Metadata.xml")):
             raise Exception("No Inventory_Metadata.xml file generated in " + datastrip_out)
-        # Patch the dates
-        self._patch_inventory_dates_datastrip(datastrip_out)
         # Tar the datastrip
         ds_basename = os.path.basename(datastrip_out)
         out_file = os.path.join(output_folder_inventory, ds_basename)
@@ -146,7 +142,7 @@ class InventoryL1B(Inventory):
 
     def _inventory_l1b_gr(self, context_manager, dateoflogs, acquisition_station, working_dir, nb_tasks):
         self.logger.info("Doing inventory for L1B Granules")
-        pdi_ds_output_folder = context_manager.get_element("PROC.PDI_DS")
+        pdi_ds_output_folder = context_manager.get_element("PROC.L1B.PDI_DS")
         if pdi_ds_output_folder is None:
             raise Exception("No PROC.PDI_DS in context !!!")
         datastrips_out = glob.glob(os.path.join(pdi_ds_output_folder[0], "S2*DS*"))
@@ -171,7 +167,7 @@ class InventoryL1B(Inventory):
             FileUtils.create_directory(output_folder_inventory)
         # Create the job orders
         jobs = self.split_granules_jobs(granules_out, inventory_working_dir, output_folder_inventory, datastrip_out,
-                                        acquisition_station, len(granules_out), "L1B")#nb_tasks, "L1B")
+                                        acquisition_station, nb_tasks, "L1B")
         # Launch process
         self._launch_inventory_process(jobs, "GR_L1B", self._gr_inventory_script)
         # Tar the granules
@@ -179,7 +175,6 @@ class InventoryL1B(Inventory):
             # Check if inventory has been generated
             if not os.path.exists(os.path.join(gr, "Inventory_Metadata.xml")):
                 raise Exception("No Inventory_Metadata.xml file generated in " + gr)
-            self._patch_inventory_dates_granule(gr)
             granule_filename = os.path.join(output_folder_inventory, os.path.basename(gr))
             self.logger.debug("Compressing "+gr+" to "+granule_filename)
             # Copy OLQC reports
