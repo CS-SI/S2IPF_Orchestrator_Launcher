@@ -63,6 +63,13 @@ class VersionManager(object):
             self._exe_json["OLQC"] = self._probas_version_map["OLQC"][0]
             if "GSE" in self._probas_version_map.keys():
                 self._exe_json["GSE"] = self._probas_version_map["GSE"][0]
+            if "INV_MTD_L1" in self._probas_version_map.keys():
+                self._exe_json["INVENTORY_L1_SOFT_VERSION"] = self._probas_version_map["INV_MTD_L1"][0]
+                self._exe_json["INVENTORY_L1_SOFT_FOLDER"] = os.path.join(Constants.IDPSC_EXE_DIR, "INV_MTD_L1",
+                                                                          self._exe_json["INVENTORY_L1_SOFT_VERSION"],
+                                                                          "scripts")
+                self._logger.info("Using proba inventory L1 version "+self._exe_json["INVENTORY_L1_SOFT_VERSION"]+" in "
+                                  +self._exe_json["INVENTORY_L1_SOFT_FOLDER"])
             for chain in self._exe_json["CHAINS"]:
                 for idp in self._exe_json["CHAINS"][chain]:
                     self._exe_json["CHAINS"][chain][idp] = self._probas_version_map[idp][0]
@@ -106,7 +113,7 @@ class VersionManager(object):
         return self._exe_json["INVENTORY_L0_GR_SCRIPT_NAME"]
 
     def get_inventory_l0_soft_version(self):
-        return self._exe_json["INVENTORY_L1_SOFT_VERSION"]
+        return self._exe_json["INVENTORY_L0_SOFT_VERSION"]
 
     def get_inventory_l0_ds_script_path(self):
         return os.path.join( self.get_inventory_l0_soft_folder(),self.get_inventory_l0_ds_script_name())

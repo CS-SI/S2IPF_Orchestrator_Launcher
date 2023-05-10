@@ -4,11 +4,11 @@
   "INVENTORY_L0_SOFT_FOLDER" : "/usr/local/components/facilities/DPC-CORE-l0pack-inv-mtd/DPC-CORE-l0pack-inv-mtd-3.0.3/inventory_metadata_l0/scripts/",
   "INVENTORY_L0_DS_SCRIPT_NAME" : "inventory_metadata_l0_ds.sh",
   "INVENTORY_L0_GR_SCRIPT_NAME" : "inventory_metadata_l0_gr.sh",
-  "INVENTORY_L0_SOFT_VERSION" : "3.0.3",
-  "INVENTORY_L1_SOFT_FOLDER" : "/dpc/app/s2ipf/INV_MTD_L1/06.01.00/scripts/",
+  "INVENTORY_L0_SOFT_VERSION" : "03.00.03",
+  "INVENTORY_L1_SOFT_FOLDER" : "/dpc/app/s2ipf/INV_MTD_L1/06.01.04/scripts/",
   "INVENTORY_L1_DS_SCRIPT_NAME" : "INV_MTD_L1.bash",
   "INVENTORY_L1_GR_SCRIPT_NAME" : "INV_MTD_L1.bash",
-  "INVENTORY_L1_SOFT_VERSION" : "6.1.0",
+  "INVENTORY_L1_SOFT_VERSION" : "06.01.04",
   "OLQC" : "06.01.00",
   "GSE": "06.01.00",
   "CHAINS" : {
@@ -29,11 +29,11 @@
       "FORMAT_IMG_L1B": "06.01.00",
       "FORMAT_IMG_L1C": "06.01.00",
       "INIT_LOC_L1": "06.01.00",
-      "INIT_VS_GEO": "06.01.00",
+      "INIT_VS_GEO": "06.01.01",
       "MASK_S2": "06.01.00",
       "FORMAT_IMG_PVI_TCI": "06.01.00",
       "FORMAT_METADATA_DS_L1A": "06.01.00",
-      "FORMAT_METADATA_DS_L1B": "06.01.00",
+      "FORMAT_METADATA_DS_L1B": "06.01.04",
       "FORMAT_METADATA_DS_L1C": "06.01.00",
       "FORMAT_METADATA_GR_L1A": "06.01.00",
       "FORMAT_METADATA_GR_L1B": "06.01.00",
@@ -44,12 +44,12 @@
       "GET_TILE_LIST": "06.01.00",
       "RADIO_AB": "06.01.00",
       "RADIO_FINALIZE": "06.01.00",
-      "RESAMPLE_TO_VS": "06.01.00",
-      "SPATIO": "06.01.00",
+      "RESAMPLE_TO_VS": "06.01.01",
+      "SPATIO": "06.01.01",
       "TILE_FINALIZE": "06.01.00",
-      "TILE_INIT": "06.01.00",
-      "TP_COLLECT": "06.01.00",
-      "TP_FILTER": "06.01.00",
+      "TILE_INIT": "06.01.03",
+      "TP_COLLECT": "06.01.01",
+      "TP_FILTER": "06.01.01",
       "UNFORMAT_GRI": "06.01.00",
       "QL_CLOUD_MASK": "06.01.00",
       "QL_DECOMP": "06.01.00",
@@ -60,5 +60,3 @@
     }
   }
 }
-
-

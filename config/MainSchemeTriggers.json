@@ -1,6 +1,10 @@
 {
   "RESAMPLE_TO_VS":
   {
+     "06.01.01" : "6.1"
+  },
+  "RESAMPLE_TO_VS":
+  {
      "06.01.00" : "6.1"
   },
   "UPDATE_LOC":
